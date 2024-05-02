@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment Counter Web Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body{
+            background-color: #2a364f;
+        }
+
+        .wrapper{
+            position: absolute;
+            width: 80vw;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .mainbox{
+            width: 28vmin;
+            height: 28vmin;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 1em 0;
+            position: relative;
+            font-size: 18px;            
+        }
+
+        i{
+            color: #fff;
+            text-shadow: 0 1px 8px rgba(255, 255, 255, 0.5);
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        span.counter{
+            color: orange;
+            display: grid;
+            place-items: center;
+            font-weight: 600;
+            font-size: 3em;
+        }
+
+        span.text{
+            color: rgba(245, 245, 245, 0.744);
+            font-size: 1.1em;
+            text-align: center;
+            pad: 0.7em 0;
+            font-weight: 400;
+            line-height: 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="mainbox">
+            <i class="bi bi-cup-hot-fill"></i>
+            <span class="counter" data-target="4000"></span>
+            <span class="text">Project Completed</span>
+        </div>
+        
+        <div class="mainbox">
+            <i class="bi bi-people-fill"></i>
+            <span class="counter" data-target="15000"></span>
+            <span class="text">Our Happy Clients</span>
+        </div>
+        
+        <div class="mainbox">
+            <i class="bi bi-list-task"></i>
+            <span class="counter" data-target="500"></span>
+            <span class="text">OnGoing Projects</span>
+        </div>
+    </div>
+
+    <script>
+        const counters = document.querySelectorAll('.counter');
+
+        counters.forEach(function(counter){
+            // console.log(counter);
+            counter.innerHTML = 0;
+
+            const updateCounter = function(){
+                const targetCount = +counter.getAttribute('data-target');
+                // console.log(typeof targetCount);
+
+                const startingCount = Number(counter.innerHTML);
+
+                const incr = targetCount / 100;
+
+                if(startingCount < targetCount){
+                    counter.innerHTML = `${Math.round(startingCount + incr)}`;
+                    setTimeout(updateCounter, 10)
+                }else{
+                    counter.innerHTML = targetCount;
+                }
+
+            }
+
+            updateCounter();
+        })
+    </script>
+</body>
+</html>

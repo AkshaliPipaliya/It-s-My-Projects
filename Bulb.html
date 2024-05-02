@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb ON / OFF</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #btn{
+            cursor: pointer;
+            height: 40px;
+            width: 160px;
+            background-color: red;
+            border-radius: 20px;
+            font-size: 20px;
+            font-weight: 900;
+            font-family: 'Courier New', Courier, monospace;
+            border: 2px solid black;
+        }
+
+        .mainbox{
+            height: 95.8vh;
+            background-color: cornflowerblue;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+               
+    </style>
+</head>
+<body>
+    <div class="mainbox">
+        <h1>Bulb Turn ON/OFF</h1>
+        <img src="bulboff.png" style="width: 150px;" alt="bulb" id="imgon">
+        <br>
+            <button id="btn">TURN ON</button>
+    </div>
+
+    <script>
+        let btn = document.getElementById('btn')
+        let img = document.getElementById('imgon')
+        btn.addEventListener('click',change)
+        function change(e){
+            if(btn.textContent.includes('TURN ON')){
+                img.src = "bulbon.png"
+                btn.style.backgroundColor = "green"
+                btn.textContent = "TURN OFF"
+            }else{
+                img.src = "bulboff.png"
+                btn.style.backgroundColor = "red"
+                btn.textContent = "TURN ON"
+            }
+        }
+    </script>
+</body>
+</html>
